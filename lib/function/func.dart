@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:html/parser.dart';
-import 'package:read/api/api.dart';
-import 'package:read/models/search_model.dart';
-import 'package:read/utils/net_utils.dart';
+import 'package:read_app/api/api.dart';
+import 'package:read_app/models/search_model.dart';
+import 'package:read_app/utils/net_utils.dart';
 
 class Func {
-
   ///搜索
   static search(String keyword, {int page = 1}) async {
     ///书源解析类型
     String type = BookSource.getType();
+
     ///结果
     List models = [];
     if (type == 'Web') {
-
       //参数
       String searchUrl = BookSource.getSearchUrl();
       String searchKey = BookSource.getSearchKey();
@@ -84,8 +83,7 @@ class Func {
           flag++;
         }
       }
-    } else if (type == 'Api') {
-    }
+    } else if (type == 'Api') {}
     return models;
   }
 
@@ -151,7 +149,7 @@ class Func {
         debugPrint(exception.toString());
       },
     );
-    if(document == null){
+    if (document == null) {
       return models;
     }
     if (contentRule.ifPage) {

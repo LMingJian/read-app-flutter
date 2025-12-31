@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:read/api/api.dart';
-import 'package:read/pages/home_page.dart';
-import 'package:read/utils/file_utils.dart';
-import 'package:read/utils/net_utils.dart';
+import 'package:read_app/api/api.dart';
+import 'package:read_app/pages/home_page.dart';
+import 'package:read_app/utils/file_utils.dart';
+import 'package:read_app/utils/net_utils.dart';
 
 /// 启动页
 class StartPage extends StatefulWidget {
@@ -23,7 +23,9 @@ class _StartPage extends State<StartPage> {
     var duration = const Duration(seconds: 3);
     Timer(duration, () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const MainPage()));
+        context,
+        MaterialPageRoute(builder: (context) => const MainPage()),
+      );
     });
   }
 

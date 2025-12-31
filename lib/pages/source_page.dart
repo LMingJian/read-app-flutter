@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:read/api/api.dart';
-import 'package:read/utils/toast_utils.dart';
+import 'package:read_app/api/api.dart';
+import 'package:read_app/utils/toast_utils.dart';
 
 /// 历史
 class SourcePage extends StatefulWidget {
@@ -27,30 +27,27 @@ class _SourcePage extends State<SourcePage> {
       boxes.add(_box(each.bookSourceName, each.id));
     }
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Source'),
-      ),
+      appBar: AppBar(title: const Text('Source')),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(
-          children: boxes,
-        ),
+        child: Column(children: boxes),
       ),
     );
   }
 
   Widget _box(String str, int value) {
     return RadioListTile(
-        value: value,
-        title: Text(str, style: const TextStyle(fontSize: 18)),
-        groupValue: _newValue,
-        onChanged: (value) {
-          setState(() {
-            _newValue = value;
-            BookSource.setCurrentSource(_newValue);
-            ToastUtils.show('书源切换成功');
-            Navigator.pushNamed(context, '/home');
-          });
+      value: value,
+      title: Text(str, style: const TextStyle(fontSize: 18)),
+      groupValue: _newValue,
+      onChanged: (value) {
+        setState(() {
+          _newValue = value;
+          BookSource.setCurrentSource(_newValue);
+          ToastUtils.show('书源切换成功');
+          Navigator.pushNamed(context, '/home');
         });
+      },
+    );
   }
 }

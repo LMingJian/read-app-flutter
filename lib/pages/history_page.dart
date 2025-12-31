@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:read/utils/file_utils.dart';
-import 'package:read/utils/shared_preferences_utils.dart';
-import 'package:read/utils/toast_utils.dart';
+import 'package:read_app/utils/file_utils.dart';
+import 'package:read_app/utils/shared_preferences_utils.dart';
+import 'package:read_app/utils/toast_utils.dart';
 
 /// 历史
 class HistoryPage extends StatefulWidget {
@@ -51,15 +51,14 @@ class _HistoryPage extends State<HistoryPage> {
         child: Column(
           children: [
             Expanded(
-                child: SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 25.0, horizontal: 25.0),
-              child: Wrap(
-                spacing: 25.0,
-                runSpacing: 15,
-                children: boxes,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 25.0,
+                  horizontal: 25.0,
+                ),
+                child: Wrap(spacing: 25.0, runSpacing: 15, children: boxes),
               ),
-            )),
+            ),
           ],
         ),
       ),
@@ -68,18 +67,19 @@ class _HistoryPage extends State<HistoryPage> {
 
   Widget _box(String str, String url) {
     return TextButton(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-          overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
-          minimumSize: MaterialStateProperty.all(const Size(600, 60)),
-        ),
-        onPressed: () {
-          // 记录选择
-          debugPrint('当前书籍链接：$url');
-          SharedPreferencesUtils.setData('indexUrl', url);
-          SharedPreferencesUtils.setData('indexUrlFlag', url);
-          Navigator.pushNamed(context, '/home');
-        },
-        child: Text(str, style: const TextStyle(fontSize: 18)));
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+        overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
+        minimumSize: MaterialStateProperty.all(const Size(600, 60)),
+      ),
+      onPressed: () {
+        // 记录选择
+        debugPrint('当前书籍链接：$url');
+        SharedPreferencesUtils.setData('indexUrl', url);
+        SharedPreferencesUtils.setData('indexUrlFlag', url);
+        Navigator.pushNamed(context, '/home');
+      },
+      child: Text(str, style: const TextStyle(fontSize: 18)),
+    );
   }
 }

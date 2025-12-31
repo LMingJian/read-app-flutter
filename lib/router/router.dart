@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:read/pages/home_page.dart';
-import 'package:read/pages/history_page.dart';
-import 'package:read/pages/more_page.dart';
-import 'package:read/pages/search_page.dart';
-import 'package:read/pages/source_page.dart';
+import 'package:read_app/pages/home_page.dart';
+import 'package:read_app/pages/history_page.dart';
+import 'package:read_app/pages/more_page.dart';
+import 'package:read_app/pages/search_page.dart';
+import 'package:read_app/pages/source_page.dart';
 
 final routes = {
   "/search": (context) => const SearchPage(),

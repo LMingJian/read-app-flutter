@@ -1,4 +1,4 @@
-import 'package:read/utils/shared_preferences_utils.dart';
+import 'package:read_app/utils/shared_preferences_utils.dart';
 
 class Rule {
   // 标题、链接匹配规则
@@ -6,13 +6,14 @@ class Rule {
   late Map? replace;
   late bool ifPage;
 
-  Rule(
-      {this.title = '',
-      this.link = '',
-      this.replace,
-      this.ifPage = false,
-      this.flagPage = '',
-      this.rePage = ''});
+  Rule({
+    this.title = '',
+    this.link = '',
+    this.replace,
+    this.ifPage = false,
+    this.flagPage = '',
+    this.rePage = '',
+  });
 }
 
 class Source {
@@ -36,88 +37,23 @@ class Source {
       bookSearchPage;
   late Rule searchRule, catalogRule, contentRule;
   Source(
-      this.id,
-      this.type,
-      this.bookSourceName,
-      this.bookSourceUrl,
-      this.bookSearchMethod,
-      this.bookSearchUrl,
-      this.bookSearchKey,
-      this.bookSearchPage,
-      this.searchRule,
-      this.catalogRule,
-      this.contentRule);
+    this.id,
+    this.type,
+    this.bookSourceName,
+    this.bookSourceUrl,
+    this.bookSearchMethod,
+    this.bookSearchUrl,
+    this.bookSearchKey,
+    this.bookSearchPage,
+    this.searchRule,
+    this.catalogRule,
+    this.contentRule,
+  );
 }
 
 class BookSource {
   static int currentSource = 0;
-  static List<Source> sourceList = [
-    Source(
-        0,
-        'Web',
-        '新笔趣阁',
-        'https://www.xbiquge.la',
-        'POST',
-        'https://www.xbiquge.la/modules/article/waps.php',
-        'searchkey',
-        '',
-        Rule(title: '#content .even a'),
-        Rule(title: '#list a'),
-        Rule(title: '#content')),
-    Source(
-        1,
-        'Web',
-        '一七小说',
-        'https://www.1qxs.com',
-        'GET',
-        'https://www.1qxs.com/search.html',
-        'kw',
-        'p',
-        Rule(title: '.book .name a'),
-        Rule(title: '.catalog .list a', replace: {'/xs/': '/list/'}),
-        Rule(
-            title: '.content',
-            replace: {'本章未完，点击[下一页]继续阅读-->>': ''},
-            ifPage: true,
-            flagPage: '.next a',
-            rePage: r'/xs/(\d+)/(\d+)')),
-    Source(
-        2,
-        'Web',
-        '思路客',
-        'https://www.siluke.com',
-        'POST',
-        'https://www.siluke.com/search.php',
-        'keyword',
-        '',
-        Rule(title: '.novelslist .s2 a'),
-        Rule(title: '#list dd a'),
-        Rule(title: '#content', replace: {'read_content_up();': ''})),
-    Source(
-        3,
-        'Web',
-        '顶点',
-        'https://www.ddxs.com',
-        'POST',
-        'https://www.ddxs.com/search.php',
-        'keyword',
-        '',
-        Rule(title: 'td a'),
-        Rule(title: '.L a'),
-        Rule(title: '#contents', replace: {'show_htm2();': '', 'show_htm3();': ''})),
-    Source(
-        4,
-        'Web',
-        '八一中文',
-        'https://www.81zw.com',
-        'GET',
-        'https://www.81zw.com/search.php',
-        'keyword',
-        '',
-        Rule(title: '.result-game-item-title-link'),
-        Rule(title: '#list dd a'),
-        Rule(title: '#content')),
-  ];
+  static List<Source> sourceList = [];
 
   static void init() {
     SharedPreferencesUtils.getData("currentSource").then((value) {

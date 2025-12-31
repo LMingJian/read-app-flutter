@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:read/router/router.dart' as router;
-import 'package:read/pages/start_page.dart';
+import 'package:read_app/router/router.dart' as router;
+import 'package:read_app/pages/start_page.dart';
 
 /// 入口
 void main() {
   runApp(const MyApp());
 
   // 强制竖屏
-  SystemChrome.setPreferredOrientations(
-    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
-  );
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }
 
 /// app配置
@@ -22,9 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ReadApp',
-      theme: ThemeData(
-        primaryColor: Colors.grey,
-      ),
+      theme: ThemeData(primaryColor: Colors.grey),
       // 注册路由表
       routes: router.routes,
       onGenerateRoute: router.generateRoute,

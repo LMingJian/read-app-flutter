@@ -1,16 +1,15 @@
-# read_app
+# 小说爬取 App
 
-A new Flutter project.
+@LM 2021-5-1
 
-## Getting Started
+## 介绍
 
-This project is a starting point for a Flutter application.
+由 `Flutter+Dart` 实现的网络小说爬取 App，拥有简单的搜索，阅读功能，能对阅读历史进行记录。
 
-A few resources to get you started if this is your first Flutter project:
+```shell
+# 打包
+flutter build apk --release --target-platform android-arm
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2022-08-14 重构：Flutter > 3.0
+2022-09-07 修复加载失败时加载动画不消失的问题，添加注释

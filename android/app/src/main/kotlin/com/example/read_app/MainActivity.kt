@@ -1,4 +1,4 @@
-package com.example.read_app
+package com.lmingjian.read_app
 
 import io.flutter.embedding.android.FlutterActivity
 
